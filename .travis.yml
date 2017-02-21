@@ -5,6 +5,7 @@ language: bash
 script:
   - echo IMG_NAME='pi-cloud' >config
   - touch ./stage3/SKIP ./stage4/SKIP
+  - touch ./stage2/02-docker-pull/SKIP
   - rm stage4/EXPORT*
   - ./build-docker.sh
 branches:
