@@ -9,7 +9,7 @@ script:
   - ./build-docker.sh
 branches:
   only:
-    - my
+    - cloud
     - /^v\d.*$/
 deploy:
   provider: releases
