@@ -8,6 +8,7 @@ script:
   - touch ./stage2/02-docker-pull/SKIP
   - rm stage4/EXPORT*
   - ./build-docker.sh
+  - ls -l deploy/
 branches:
   only:
     - cloud
