@@ -1,5 +1,5 @@
-# pi-gen
-_Tool used to create the raspberrypi.org Raspbian images_
+# pi-gen [![Build Status](https://travis-ci.org/sealsystems/pi-gen.svg?branch=cloud)](https://travis-ci.org/sealsystems/pi-gen)
+_Tool used to create the Raspbian LITE image with cloud-init and Docker installed_
 
 ### TODO
 1. Documentation

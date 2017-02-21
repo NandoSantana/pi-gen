@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+language: bash
+script:
+  - echo IMG_NAME='pi-cloud' >config
+  - touch ./stage3/SKIP ./stage4/SKIP
+  - rm stage4/EXPORT*
+  - ./build-docker.sh
+branches:
+  only:
+    - my
+    - /^v\d.*$/
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key: ${GITHUB_TOKEN}
+  file:
+    - deploy/image_$(date +%Y-%m-%d)-pi-cloud-lite.zip
+  on:
+    tags: true
+    repo: sealsystems/pi-gen
