@@ -7,7 +7,7 @@ RUN apt-get -y update && \
         bsdtar libcap2-bin rsync grep \
     && rm -rf /var/lib/apt/lists/*
 
-ADD https://github.com/multiarch/qemu-user-static/releases/download/v2.8.0/x86_64_qemu-arm-static.tar.gz /usr/bin
+COPY qemu-arm-static /usr/bin/qemu-arm-static
 
 COPY . /pi-gen/
 

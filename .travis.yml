@@ -3,10 +3,9 @@ services:
   - docker
 language: bash
 script:
-  - ls -l /usr/bin
-  - wget https://github.com/multiarch/qemu-user-static/releases/download/v2.8.0/x86_64_qemu-arm-static.tar.gz
-  - tar xzvf x86_64_qemu-arm-static.tar.gz -C /usr/bin
-  - ls -l /usr/bin
+  - docker pull hypriot/qemu-register
+  - docker create --name qemu hypriot/qemu-register
+  - docker cp qemu:qemu-arm qemu-arm-static
   - echo IMG_NAME='pi-cloud' >config
   - touch ./stage3/SKIP ./stage4/SKIP
   - rm stage4/EXPORT*
