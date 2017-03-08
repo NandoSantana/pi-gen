@@ -16,6 +16,18 @@ sed /tmp/1/cmdline.txt -i -e "s|root=/dev/[^ ]*|root=${part2}|"
 sed /tmp/2/etc/fstab -i -e "s|^.* / |${part2}  / |"
 sed /tmp/2/etc/fstab -i -e "s|^.* /boot |${part1}  /boot |"
 
+if [ -f /mnt/ssh ]; then
+  cp /mnt/ssh /tmp/1/
+fi
+
+if [ -f /mnt/ssh.txt ]; then
+  cp /mnt/ssh.txt /tmp/1/
+fi
+
+if [ -f /settings/wpa_supplicant.conf ]; then
+  cp /settings/wpa_supplicant.conf /tmp/1/
+fi
+
 if ! grep -q resize /proc/cmdline; then
   sed -i 's| quiet init=/usr/lib/raspi-config/init_resize.sh||' /tmp/1/cmdline.txt
 fi
