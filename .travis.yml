@@ -8,7 +8,7 @@ script:
   - touch ./stage2/02-docker-pull/SKIP
   - rm stage4/EXPORT*
   - ./build-docker.sh
-  - ls -l deploy/
+  - mv deploy/image_$(date +%Y-%m-%d)-pi-cloud-lite.zip deploy/$(date +%Y-%m-%d)-pi-cloud-lite.zip
 branches:
   only:
     - cloud
@@ -18,7 +18,7 @@ deploy:
   skip_cleanup: true
   api_key: ${GITHUB_TOKEN}
   file:
-    - deploy/image_$(date +%Y-%m-%d)-pi-cloud-lite.zip
+    - deploy/$(date +%Y-%m-%d)-pi-cloud-lite.zip
   on:
     tags: true
     repo: sealsystems/pi-gen
